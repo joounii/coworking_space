@@ -1,0 +1,13 @@
+= form_for @seat do |f|
+  - if @seat.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@seat.errors.count, "error")} prohibited this seat from being saved:"
+      %ul
+        - @seat.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

@@ -62,6 +62,8 @@
     <orderEntry type="library" scope="PROVIDED" name="formtastic (v4.0.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formtastic_i18n (v0.7.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, rbenv: 3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="haml (v6.1.1, rbenv: 3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="haml-rails (v2.1.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="has_scope (v0.8.1, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.1, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v1.2.3, rbenv: 3.2.2) [gem]" level="application" />
@@ -117,6 +119,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.0.9, rbenv: 3.2.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="temple (v0.10.1, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.3.0, rbenv: 3.2.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.1, rbenv: 3.2.2) [gem]" level="application" />
@@ -157,10 +160,14 @@
         <option value="devise:install" />
         <option value="devise:views" />
         <option value="draper:install" />
+        <option value="erb:controller" />
+        <option value="erb:mailer" />
+        <option value="erb:scaffold" />
         <option value="formtastic:form" />
         <option value="formtastic:input" />
         <option value="formtastic:install" />
         <option value="generator" />
+        <option value="haml:application_layout" />
         <option value="helper" />
         <option value="inherited_resources_controller" />
         <option value="integration_test" />
@@ -218,10 +225,14 @@
         <option value="devise:install" />
         <option value="devise:views" />
         <option value="draper:install" />
+        <option value="erb:controller" />
+        <option value="erb:mailer" />
+        <option value="erb:scaffold" />
         <option value="formtastic:form" />
         <option value="formtastic:input" />
         <option value="formtastic:install" />
         <option value="generator" />
+        <option value="haml:application_layout" />
         <option value="helper" />
         <option value="inherited_resources_controller" />
         <option value="integration_test" />
@@ -449,6 +460,11 @@
                 </subtasks>
               </RakeTaskImpl>
               <RakeTaskImpl description="" fullCommand="db:truncate_all" id="truncate_all" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="haml">
+            <subtasks>
+              <RakeTaskImpl description="Convert html.erb to html.haml each file in app/views" fullCommand="haml:erb2haml" id="erb2haml" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="importmap">
