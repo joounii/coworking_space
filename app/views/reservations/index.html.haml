@@ -1,8 +1,16 @@
 %p{:style => "color: green"}= notice
 %h1 Reservations
-#reservations
-    - @reservations.each do |reservation|
-        = render reservation
-        %p
-            = link_to "Show this reservation", reservation
-= link_to "New reservation", new_reservation_path
+%table.table.table-hover.table-striped
+    %thead
+        %tr
+            %th{:scope => "col"} Id
+            %th{:scope => "col"} Reservation Date
+            %th{:scope => "col"} Seat
+    %tbody
+        - @reservations.each do |reservation|
+            %tr{:onclick => "location.href='#{reservation_path(reservation)}'"}
+                %td= reservation.id
+                %td= reservation.reservation_date
+                %td= reservation.seat.title
+
+= link_to "New reservation", new_reservation_path, class: "btn btn-primary"

@@ -9,6 +9,11 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1 or /reservations/1.json
   def show
+    reservation = Reservation.find(params[:id])
+    unless current_user == reservation.user
+      flash[:alert] = "You are not authorized to access this reservation."
+      redirect_to root_path
+    end
   end
 
   # GET /reservations/new
@@ -19,6 +24,12 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
+    reservation = Reservation.find(params[:id])
+    unless current_user == reservation.user
+      flash[:alert] = "You are not authorized to access this reservation."
+      redirect_to root_path
+    end
+    @available_seats = Seat.all
   end
 
   # POST /reservations or /reservations.json

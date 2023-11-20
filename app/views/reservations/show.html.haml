@@ -1,5 +1,16 @@
 %p{:style => "color: green"}= notice
-= render @reservation
+%p
+  %strong Reservation date:
+%p
+  Id:
+  = @reservation.id
+%p
+  Reservation Date:
+  = @reservation.reservation_date
+%p
+  Seat:
+  = @reservation.seat.title
+%br/
 %div
   = link_to "Edit this reservation", edit_reservation_path(@reservation)
   |

@@ -12,4 +12,4 @@
     = form.date_field :reservation_date
     = form.select("seat_id", @available_seats.collect {|p| [ p.title.to_s, p.id ] }, { include_blank: false, prompt: "please select a seat" })
   %div
-    = form.submit
+    = form.submit "Submit", class:"btn btn-primary mt-3"
