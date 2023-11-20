@@ -10,6 +10,12 @@
 %p
   Seat:
   = @reservation.seat.title
+%p
+  Morning:
+  = @reservation.morning
+%p
+  Afternoon:
+  = @reservation.afternoon
 %br/
 %div
   = link_to "Edit this reservation", edit_reservation_path(@reservation)

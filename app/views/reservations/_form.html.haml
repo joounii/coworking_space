@@ -11,5 +11,11 @@
     = form.label :reservation_date, style: "display: block"
     = form.date_field :reservation_date
     = form.select("seat_id", @available_seats.collect {|p| [ p.title.to_s, p.id ] }, { include_blank: false, prompt: "please select a seat" })
+    %p
+      Morning:
+      = form.check_box :morning, as: :boolean, label: 'Morning'
+    %p
+      Afternoon:
+      = form.check_box :afternoon, as: :boolean, label: 'Afternoon'
   %div
-    = form.submit "Submit", class:"btn btn-primary mt-3"
+    = form.submit "Submit", class: "btn btn-primary mt-3"

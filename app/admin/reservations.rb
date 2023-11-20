@@ -5,7 +5,7 @@ ActiveAdmin.register Reservation do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :reservation_date, :user, :seat, :state
+  permit_params :reservation_date, :user, :seat, :state, :morning, :afternoon
 
   action_item :approve_reservation, only: :show do
     link_to 'Approve Reservation', approve_admin_reservation_path(reservation), method: :put if resource.requesting?
