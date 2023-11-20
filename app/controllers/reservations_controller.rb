@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    @available_seats = Seat.all
   end
 
   # GET /reservations/1/edit
@@ -23,6 +24,7 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
     @reservation = current_user.reservations.build(reservation_params)
+    @available_seats = Seat.all
 
     respond_to do |format|
       if @reservation.save
@@ -66,6 +68,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:reservation_date)
+      params.require(:reservation).permit(:reservation_date, :seat_id)
     end
 end
