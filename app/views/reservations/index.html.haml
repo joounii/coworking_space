@@ -6,11 +6,13 @@
             %th{:scope => "col"} Id
             %th{:scope => "col"} Reservation Date
             %th{:scope => "col"} Seat
+            %th{:scope => "col"} Status
     %tbody
         - @reservations.each do |reservation|
             %tr{:onclick => "location.href='#{reservation_path(reservation)}'"}
                 %td= reservation.id
                 %td= reservation.reservation_date
                 %td= reservation.seat.title
+                %td= reservation.state
 
 = link_to "New reservation", new_reservation_path, class: "btn btn-primary"

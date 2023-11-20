@@ -5,7 +5,37 @@ ActiveAdmin.register Reservation do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :reservation_date
+  permit_params :reservation_date, :user, :seat, :state
+
+  action_item :approve_reservation, only: :show do
+    link_to 'Approve Reservation', approve_admin_reservation_path(reservation), method: :put if resource.requesting?
+  end
+
+  action_item :deny_reservation, only: :show do
+    link_to 'Deny Reservation', deny_admin_reservation_path(reservation), method: :put if resource.requesting?
+  end
+
+  member_action :approve, method: :put do
+    if resource.requesting?
+      resource.reservation_approved!
+      flash[:notice] = 'Reservation approved!'
+    else
+      flash[:alert] = 'Unable to approve reservation. Check the reservation status.'
+    end
+    redirect_to admin_reservation_path(resource)
+  end
+
+  member_action :deny, method: :put do
+    if resource.requesting?
+      resource.reservation_denied!
+      flash[:notice] = 'Reservation denied!'
+    else
+      flash[:alert] = 'Unable to deny reservation. Check the reservation status.'
+    end
+    redirect_to admin_reservation_path(resource)
+  end
+
+
   #
   # or
   #
